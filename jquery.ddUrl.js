@@ -1,6 +1,6 @@
 /**
  * jQuery ddUrl Plugin
- * @version 1.1 (2012-09-05)
+ * @version 1.1.1 (2012-09-17)
  * 
  * @desc Библиотека для работы с URL.
  * 
@@ -18,7 +18,7 @@ $.ddUrl = {
 		//Если url не передан
 		if ($.type(url) != 'string'){
 			//Берём за основу текущий урл
-			return this.current;
+			url = window.location.toString();
 		}
 		
 		var regResult = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/.exec(decodeURI(url)),
@@ -68,5 +68,5 @@ $.ddUrl = {
 };
 
 //Распарсим один раз текущий url
-$.ddUrl.current = $.ddUrl.get(window.location.toString());
+$.ddUrl.current = $.ddUrl.get();
 })(jQuery);
