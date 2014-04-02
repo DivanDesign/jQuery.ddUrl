@@ -42,7 +42,19 @@ $.ddUrl = {
 		return result;
 	},
 	
-	get: function(url){
+	/**
+	 * parse
+	 * @version 1.1 (2014-04-02)
+	 * 
+	 * @desc Разбивает строку url в объект.
+	 * 
+	 * @param url {string} - Строка url. Default: window.location.toString().
+	 * 
+	 * @return {plain object}
+	 */
+	parse: function(url){
+		var _this = this;
+		
 		//Если url не передан
 		if ($.type(url) != 'string'){
 			//Берём за основу текущий урл
@@ -64,9 +76,9 @@ $.ddUrl = {
 				//Путь (без протокола, хоста, порта и всех параметров)
 				path: regResult[9],
 				//Get-Параметры
-				query: regResult[12] || '',
+				query: _this.parseQuery(regResult[12] || ''),
 				//Хэш
-				hash: regResult[13] || '',
+				hash: _this.parseQuery(regResult[13] || ''),
 				//Внутренняя ли это ссылка
 				internal: false
 			};
@@ -96,5 +108,5 @@ $.ddUrl = {
 };
 
 //Распарсим один раз текущий url
-$.ddUrl.current = $.ddUrl.get();
+$.ddUrl.current = $.ddUrl.parse();
 })(jQuery);
