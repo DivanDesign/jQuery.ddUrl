@@ -1,12 +1,12 @@
 /**
  * jQuery ddUrl Plugin
- * @version 1.1.1 (2012-09-17)
+ * @version 1.2 (2014-04-02)
  * 
  * @desc Библиотека для работы с URL.
  * 
  * @uses jQuery 1.7.2
  * 
- * @copyright 2012, DivanDesign
+ * @copyright 2014, DivanDesign
  * http://www.DivanDesign.biz
  */
 
