@@ -14,6 +14,34 @@
 $.ddUrl = {
 	current: {},
 	
+	/**
+	 * parseQuery
+	 * @version 1.0 (2014-04-02)
+	 * 
+	 * @desc Разбивает строку запроса в объект.
+	 * 
+	 * @param query {string} - Строка запроса. @required
+	 * 
+	 * @return {plain object}
+	 */
+	parseQuery: function(query){
+		var result = {};
+		
+		//Если что-то вообще передали
+		if (query.length > 0){
+			//Разбиваем по паре ключ-значение
+			query = query.split('&');
+			
+			for (var i = 0; i < query.length; i++){
+				var elem = query[i].split('=');
+				
+				result[elem[0]] = elem[1] || '';
+			}
+		}
+		
+		return result;
+	},
+	
 	get: function(url){
 		//Если url не передан
 		if ($.type(url) != 'string'){
