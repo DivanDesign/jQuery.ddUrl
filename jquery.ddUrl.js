@@ -1,6 +1,6 @@
 /**
  * jQuery ddUrl Plugin
- * @version 1.2 (2014-04-02)
+ * @version 1.2.1 (2014-12-28)
  * 
  * @desc Библиотека для работы с URL.
  * 
