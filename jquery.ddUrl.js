@@ -44,7 +44,7 @@ $.ddUrl = {
 	
 	/**
 	 * parse
-	 * @version 1.1 (2014-04-02)
+	 * @version 1.2 (2014-12-28)
 	 * 
 	 * @desc Разбивает строку url в объект.
 	 * 
@@ -75,10 +75,14 @@ $.ddUrl = {
 				relative: regResult[8],
 				//Путь (без протокола, хоста, порта и всех параметров)
 				path: regResult[9],
-				//Get-Параметры
+				//Get-параметры в виде объекта
 				query: _this.parseQuery(regResult[12] || ''),
-				//Хэш
+				//Get-параметры в виде строки
+				queryString: regResult[12] || '',
+				//Хэш в виде объекта
 				hash: _this.parseQuery(regResult[13] || ''),
+				//Хэш в виде строки
+				hashString: regResult[13] || '',
 				//Внутренняя ли это ссылка
 				internal: false
 			};
