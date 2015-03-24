@@ -1,12 +1,12 @@
 /**
  * jQuery ddUrl Plugin
- * @version 1.2.1 (2014-12-28)
+ * @version 1.3 (2015-03-24)
  * 
  * @desc Библиотека для работы с URL.
  * 
  * @uses jQuery 1.7.2
  * 
- * @copyright 2014, DivanDesign
+ * @copyright 2015, DivanDesign
  * http://www.DivanDesign.biz
  */
 
@@ -16,7 +16,7 @@ $.ddUrl = {
 	
 	/**
 	 * parseQuery
-	 * @version 1.0 (2014-04-02)
+	 * @version 1.1 (2015-03-24)
 	 * 
 	 * @desc Разбивает строку запроса в объект.
 	 * 
@@ -33,9 +33,27 @@ $.ddUrl = {
 			query = query.split('&');
 			
 			for (var i = 0; i < query.length; i++){
-				var elem = query[i].split('=');
+				var elem = query[i].split('='),
+					name = elem[0],
+					value = elem[1] || '';
 				
-				result[elem[0]] = elem[1] || '';
+				//Если это группа параметров (массив)
+				if (name.substr(-2) == '[]'){
+					//Отрезаем лишние символы массива
+					name = name.substr(0, name.length - 2);
+					
+					//Если такой массив уже существует
+					if ($.isArray(result[name])){
+						//Просто добавим
+						result[name].push(value);
+					}else{
+						//Создаём массив
+						result[name] = [value];
+					}
+				}else{
+					//Простое значение
+					result[name] = value;
+				}
 			}
 		}
 		
@@ -102,7 +120,7 @@ $.ddUrl = {
 		}
 		
 		//Если мы находимся в текущем домене, то это внутренняя ссылка
-		if (result.host == window.location.hostname) result.internal = true;
+		if (result.host == window.location.hostname){result.internal = true;}
 		
 		//Полный урл
 		result.full = result.protocol + '://' + result.host + (result.port != '' ? ':' + result.port : '') + result.relative;
