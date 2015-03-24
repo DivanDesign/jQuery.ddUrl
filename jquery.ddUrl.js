@@ -16,7 +16,7 @@ $.ddUrl = {
 	
 	/**
 	 * parseQuery
-	 * @version 1.0 (2014-04-02)
+	 * @version 1.1 (2015-03-24)
 	 * 
 	 * @desc Разбивает строку запроса в объект.
 	 * 
@@ -33,9 +33,27 @@ $.ddUrl = {
 			query = query.split('&');
 			
 			for (var i = 0; i < query.length; i++){
-				var elem = query[i].split('=');
+				var elem = query[i].split('='),
+					name = elem[0],
+					value = elem[1] || '';
 				
-				result[elem[0]] = elem[1] || '';
+				//Если это группа параметров (массив)
+				if (name.substr(-2) == '[]'){
+					//Отрезаем лишние символы массива
+					name = name.substr(0, name.length - 2);
+					
+					//Если такой массив уже существует
+					if ($.isArray(result[name])){
+						//Просто добавим
+						result[name].push(value);
+					}else{
+						//Создаём массив
+						result[name] = [value];
+					}
+				}else{
+					//Простое значение
+					result[name] = value;
+				}
 			}
 		}
 		
