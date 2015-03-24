@@ -1,12 +1,12 @@
 /**
  * jQuery ddUrl Plugin
- * @version 1.2.1 (2014-12-28)
+ * @version 1.3 (2015-03-24)
  * 
  * @desc Библиотека для работы с URL.
  * 
  * @uses jQuery 1.7.2
  * 
- * @copyright 2014, DivanDesign
+ * @copyright 2015, DivanDesign
  * http://www.DivanDesign.biz
  */
 
@@ -120,7 +120,7 @@ $.ddUrl = {
 		}
 		
 		//Если мы находимся в текущем домене, то это внутренняя ссылка
-		if (result.host == window.location.hostname) result.internal = true;
+		if (result.host == window.location.hostname){result.internal = true;}
 		
 		//Полный урл
 		result.full = result.protocol + '://' + result.host + (result.port != '' ? ':' + result.port : '') + result.relative;
