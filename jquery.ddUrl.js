@@ -136,14 +136,14 @@ $.ddUrl = {
 	},
 	
 	/**
-	 * parse
-	 * @version 1.2 (2014-12-28)
+	 * @method parse
+	 * @version 1.2.1 (2015-07-23)
 	 * 
 	 * @desc Разбивает строку url в объект.
 	 * 
-	 * @param url {string} - Строка url. Default: window.location.toString().
+	 * @param [url = window.location.toString()] {string} — Строка url.
 	 * 
-	 * @return {plain object}
+	 * @returns {plain object}
 	 */
 	parse: function(url){
 		var _this = this;
@@ -173,12 +173,18 @@ $.ddUrl = {
 				//Get-параметры в виде строки
 				queryString: regResult[12] || '',
 				//Хэш в виде объекта
-				hash: _this.parseQuery(regResult[13] || ''),
+				hash: {},
 				//Хэш в виде строки
 				hashString: regResult[13] || '',
 				//Внутренняя ли это ссылка
 				internal: false
 			};
+		
+		//Если хэш не пустой и в нём не содержится путь (domain.com/#/section)
+		if (result.hashString.length > 0 && result.hashString.charAt(0) != '/'){
+			//Значит там query string
+			result.hash = _this.parseQuery(result.hashString);
+		}
 		
 		//Если хост не пустой
 		if (result.host != ''){
