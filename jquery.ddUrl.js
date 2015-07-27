@@ -212,4 +212,13 @@ $.ddUrl = {
 
 //Распарсим один раз текущий url
 $.ddUrl.current = $.ddUrl.parse();
+
+//On document.ready
+$(function(){
+	//При изменении url (кнопки «Назад» и пр.)
+	(($.ddTools && $.ddTools.$window) || $(window)).on('popstate', function(event){
+		//Распарсим текущий url
+		$.ddUrl.current = $.ddUrl.parse();
+	});
+});
 })(jQuery);
