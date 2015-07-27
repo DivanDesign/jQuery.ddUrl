@@ -1,10 +1,10 @@
 /**
  * jQuery ddUrl Plugin
- * @version 1.4 (2015-04-27)
+ * @version 1.5 (2015-07-27)
  * 
  * @desc Библиотека для работы с URL.
  * 
- * @uses jQuery 1.7.2
+ * @requires jQuery 1.7.2
  * 
  * @copyright 2015, DivanDesign
  * http://www.DivanDesign.biz
@@ -15,24 +15,24 @@ $.ddUrl = {
 	current: {},
 	
 	/**
-	 * parseQuery
+	 * @method parseQuery
 	 * @version 1.2 (2015-04-26)
 	 * 
 	 * @desc Разбивает строку запроса в объект. Поддерживаются также конструкции вида «param[key][]=1».
 	 * 
-	 * @param query {string} - Строка запроса. @required
+	 * @param query {string} — Строка запроса.
 	 * 
-	 * @return {plain object}
+	 * @returns {plain object}
 	 */
 	parseQuery: function(query){
 		/**
 		 * @desc Устанавливает значение необходимому элементу объекта с проверкой на массив.
 		 * 
-		 * @param obj {plain object} - Исходный объект. @required
-		 * @param key {string} - Ключ. @required
-		 * @param value {mixed} - Значение. @required
+		 * @param obj {plain object} — Исходный объект.
+		 * @param key {string} — Ключ.
+		 * @param value {mixed} — Значение.
 		 * 
-		 * @return {void}
+		 * @returns {void}
 		 */
 		function setValue(obj, key, value){
 			//Если элемент существует и является массивом
@@ -48,9 +48,9 @@ $.ddUrl = {
 		/**
 		 * @desc Копирует все элементы массива в простой объект, сохраняя числовые ключи.
 		 * 
-		 * @param arr {array} - Исходный массив. @required
+		 * @param arr {array} — Исходный массив.
 		 * 
-		 * @return {plain object}
+		 * @returns {plain object}
 		 */
 		function arrayToObject(arr){
 			var result = {};
@@ -66,12 +66,12 @@ $.ddUrl = {
 		/**
 		 * @desc Рекурсивно разбирает «сложный» ключ и присваивает значение необходимому элементу объекта.
 		 * 
-		 * @param keyParts {array} - Части ключа (ключ, разбитый по '['). @required
-		 * @param obj {plain object} - Самый главный результирующий объект. @required
-		 * @param key {string} - Ключ элемента, которому необходимо присвоить значение. @required
-		 * @param value {mixed} - Значение. @required
+		 * @param keyParts {array} — Части ключа (ключ, разбитый по '[').
+		 * @param obj {plain object} — Самый главный результирующий объект.
+		 * @param key {string} — Ключ элемента, которому необходимо присвоить значение.
+		 * @param value {mixed} — Значение.
 		 * 
-		 * @return {void}
+		 * @returns {void}
 		 */
 		function parseQueryItem(keyParts, obj, key, value){
 			//Самый первый возможный ключ (помним, что из массива он вырезается)
