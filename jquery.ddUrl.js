@@ -136,6 +136,31 @@ $.ddUrl = {
 	},
 	
 	/**
+	 * @method parseHash
+	 * @version 0.1 (2017-01-30)
+	 *
+	 * @desc Разбивает строку хеша на вложенности в пути.
+	 *
+	 * @param hash {string} — Строка хэша.
+	 *
+	 * @returns {array}
+	 */
+	parseHash: function(hash){
+		var hashPath_array = hash.split('/'),
+			hashPath = [];
+		
+		for (var i = 0; i < hashPath_array.length; i++){
+			var elem = $.trim(hashPath_array[i]);
+			
+			if(elem.length != 0){
+				//Просто установим значение
+				hashPath.push(elem);
+			}
+		}
+		return hashPath;
+	},
+	
+	/**
 	 * @method parse
 	 * @version 1.2.1 (2015-07-23)
 	 * 
@@ -174,16 +199,23 @@ $.ddUrl = {
 				queryString: regResult[12] || '',
 				//Хэш в виде объекта
 				hash: {},
+				//Путь в хеше
+				hashPath: [],
 				//Хэш в виде строки
 				hashString: regResult[13] || '',
 				//Внутренняя ли это ссылка
 				internal: false
 			};
 		
-		//Если хэш не пустой и в нём не содержится путь (domain.com/#/section)
-		if (result.hashString.length > 0 && result.hashString.charAt(0) != '/'){
-			//Значит там query string
-			result.hash = _this.parseQuery(result.hashString);
+		//Если хэш не пустой
+		if (result.hashString.length > 0){
+			//в хеше содержится путь (domain.com/#/section)
+			if(result.hashString.charAt(0) == '/') {
+				result.hashPath = _this.parseHash(result.hashString);
+			}else{
+				//Значит там query string
+				result.hash = _this.parseQuery(result.hashString);
+			}
 		}
 		
 		//Если хост не пустой
