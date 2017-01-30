@@ -16,15 +16,16 @@ $.ddUrl = {
 	
 	/**
 	 * @method parseQuery
-	 * @version 1.2 (2015-04-26)
+	 * @version 1.3 (2017-01-30)
 	 * 
 	 * @desc Разбивает строку запроса в объект. Поддерживаются также конструкции вида «param[key][]=1».
 	 * 
 	 * @param query {string} — Строка запроса.
+	 * @param [isHash] {boolean} — Передали хеш.
 	 * 
 	 * @returns {plain object}
 	 */
-	parseQuery: function(query){
+	parseQuery: function(query, isHash){
 		/**
 		 * @desc Устанавливает значение необходимому элементу объекта с проверкой на массив.
 		 * 
@@ -115,10 +116,10 @@ $.ddUrl = {
 		//Если что-то вообще передали
 		if (query.length > 0){
 			//Разбиваем по паре ключ-значение
-			query = query.split('&');
+			var query_array = query.split('&');
 			
-			for (var i = 0; i < query.length; i++){
-				var elem = query[i].split('='),
+			for (var i = 0; i < query_array.length; i++){
+				var elem = query_array[i].split('='),
 					key = elem[0],
 					value = elem[1] || '';
 				
@@ -128,6 +129,28 @@ $.ddUrl = {
 					setValue(result.result, key, value);
 				}else{
 					parseQueryItem(key.split('['), result, 'result', value);
+				}
+			}
+			//Если передали хеш
+			if(
+				$.type(isHash) == 'boolean' &&
+				isHash
+			){
+				//В хеше может хранится путь (domain.com/#/section/block1)
+				//Разделим по уровням вложенности
+				query_array = query.split('/');
+				
+				var nestingLevel_index = 0;
+				result.result.nestingLevel = [];
+				
+				for (var i = 0; i < query_array.length; i++){
+					var elem = $.trim(query_array[i]);
+					
+					if(elem.length != 0){
+						//Просто установим значение
+						result.result.nestingLevel.push(elem);
+						nestingLevel_index++;
+					}
 				}
 			}
 		}
@@ -180,10 +203,10 @@ $.ddUrl = {
 				internal: false
 			};
 		
-		//Если хэш не пустой и в нём не содержится путь (domain.com/#/section)
-		if (result.hashString.length > 0 && result.hashString.charAt(0) != '/'){
+		//Если хэш не пустой
+		if (result.hashString.length > 0){
 			//Значит там query string
-			result.hash = _this.parseQuery(result.hashString);
+			result.hash = _this.parseQuery(result.hashString, true);
 		}
 		
 		//Если хост не пустой
