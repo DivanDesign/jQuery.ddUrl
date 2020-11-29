@@ -192,8 +192,8 @@ $.ddUrl = {
 	},
 	
 	/**
-	 * @method parseHash
-	 * @version 0.2 (2020-11-29)
+	 * @method parsePath
+	 * @version 1.0 (2020-11-29)
 	 * 
 	 * @desc Разбивает строку пути на массив. Каждый элемент триммингуется, пустые элементы удаляются.
 	 * 
@@ -201,7 +201,7 @@ $.ddUrl = {
 	 * 
 	 * @returns {array}
 	 */
-	parseHash: function(path){
+	parsePath: function(path){
 		var result = [];
 		
 		path = path.split('/');
@@ -224,7 +224,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parse
-	 * @version 1.2.2 (2020-11-29)
+	 * @version 1.2.3 (2020-11-29)
 	 * 
 	 * @desc Разбивает строку url в объект.
 	 * 
@@ -275,7 +275,7 @@ $.ddUrl = {
 		if (result.hashString.length > 0){
 			//в хеше содержится путь (domain.com/#/section)
 			if(result.hashString.charAt(0) == '/') {
-				result.hashPath = _this.parseHash(result.hashString);
+				result.hashPath = _this.parsePath(result.hashString);
 			}else{
 				//Значит там query string
 				result.hash = _this.parseQuery(result.hashString);
