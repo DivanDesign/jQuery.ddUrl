@@ -193,34 +193,33 @@ $.ddUrl = {
 	
 	/**
 	 * @method parseHash
-	 * @version 0.1.1 (2020-11-29)
+	 * @version 0.2 (2020-11-29)
 	 * 
-	 * @desc Разбивает строку хеша на вложенности в пути.
+	 * @desc Разбивает строку пути на массив. Каждый элемент триммингуется, пустые элементы удаляются.
 	 * 
-	 * @param hash {string} — Строка хэша.
+	 * @param path {string} — Строка пути.
 	 * 
 	 * @returns {array}
 	 */
-	parseHash: function(hash){
-		var
-			hashPath_array = hash.split('/'),
-			hashPath = []
-		;
+	parseHash: function(path){
+		var result = [];
+		
+		path = path.split('/');
 		
 		for (
 			var i = 0;
-			i < hashPath_array.length;
+			i < path.length;
 			i++
 		){
-			var elem = $.trim(hashPath_array[i]);
+			var elem = $.trim(path[i]);
 			
 			if(elem.length != 0){
 				//Просто установим значение
-				hashPath.push(elem);
+				result.push(elem);
 			}
 		}
 		
-		return hashPath;
+		return result;
 	},
 	
 	/**
