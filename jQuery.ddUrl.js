@@ -2,9 +2,7 @@
  * jQuery.ddUrl
  * @version 1.5 (2015-07-27)
  * 
- * @desc Библиотека для работы с URL.
- * 
- * @requires jQuery 1.7.2
+ * @see README.md
  * 
  * @copyright 2012–2015 [DD Group]{@link https://DivanDesign.biz }
  */
@@ -16,12 +14,6 @@ $.ddUrl = {
 	/**
 	 * @method parseQuery
 	 * @version 1.2.1 (2020-11-29)
-	 * 
-	 * @desc Разбивает строку запроса в объект. Поддерживаются также конструкции вида «param[key][]=1».
-	 * 
-	 * @param query {string} — Строка запроса.
-	 * 
-	 * @returns {objectPlain}
 	 */
 	parseQuery: function(query){
 		/**
@@ -194,12 +186,6 @@ $.ddUrl = {
 	/**
 	 * @method parsePath
 	 * @version 1.0 (2020-11-29)
-	 * 
-	 * @desc Разбивает строку пути на массив. Каждый элемент триммингуется, пустые элементы удаляются.
-	 * 
-	 * @param path {string} — Строка пути.
-	 * 
-	 * @returns {array}
 	 */
 	parsePath: function(path){
 		var result = [];
@@ -225,12 +211,6 @@ $.ddUrl = {
 	/**
 	 * @method parse
 	 * @version 1.2.3 (2020-11-29)
-	 * 
-	 * @desc Разбивает строку url в объект.
-	 * 
-	 * @param [url = window.location.toString()] {string} — Строка url.
-	 * 
-	 * @returns {objectPlain}
 	 */
 	parse: function(url){
 		var _this = this;
