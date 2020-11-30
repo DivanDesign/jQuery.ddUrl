@@ -210,7 +210,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parse
-	 * @version 1.2.4 (2020-11-30)
+	 * @version 2.0 (2020-11-30)
 	 */
 	parse: function(url){
 		var _this = this;
@@ -255,7 +255,7 @@ $.ddUrl = {
 					''
 				,
 				//Get-параметры в виде объекта
-				query: _this.parseQuery(
+				queryObject: _this.parseQuery(
 					regResult[12] ||
 					''
 				),
@@ -266,12 +266,12 @@ $.ddUrl = {
 					''
 				,
 				//Хэш в виде объекта
-				hash: {},
+				hashObject: {},
 				//Путь в хеше
 				hashPath: [],
 				
 				//Внутренняя ли это ссылка
-				internal: false
+				isInternal: false
 			}
 		;
 		
@@ -282,7 +282,7 @@ $.ddUrl = {
 				result.hashPath = _this.parsePath(result.hashString);
 			}else{
 				//Значит там query string
-				result.hash = _this.parseQuery(result.hashString);
+				result.hashObject = _this.parseQuery(result.hashString);
 			}
 		}
 		
@@ -306,7 +306,7 @@ $.ddUrl = {
 		
 		//Если мы находимся в текущем домене, то это внутренняя ссылка
 		if (result.host == window.location.hostname){
-			result.internal = true;
+			result.isInternal = true;
 		}
 		
 		//Полный урл

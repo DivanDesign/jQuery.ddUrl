@@ -79,14 +79,14 @@ console.log($.ddUrl.current);
 		* `string`
 		* `''`
 	
-* `jQuery.ddUrl.current.query`
+* `jQuery.ddUrl.current.queryObject`
 	* Desctription: Query parameters as object.  
 		E. g. `{param1: 'value1', param2: 'value2'}`.
 	* Valid values:
 		* `objectPlain`
 		* `{}`
 	
-* `jQuery.ddUrl.current.query[$paramName]`
+* `jQuery.ddUrl.current.queryObject[$paramName]`
 	* Desctription: Parameter, when key is parameter name, value is parameter value.
 	* Valid values: `mixed`
 	
@@ -97,14 +97,14 @@ console.log($.ddUrl.current);
 		* `string`
 		* `''`
 	
-* `jQuery.ddUrl.current.hash`
+* `jQuery.ddUrl.current.hashObject`
 	* Desctription: Hash parameters as object if hash is set as query string.  
 		E. g. `{param1: 'value1', param2: 'value2'}`).
 	* Valid values:
 		* `objectPlain`
 		* `{}`
 	
-* `jQuery.ddUrl.current.hash[$paramName]`
+* `jQuery.ddUrl.current.hashObject[$paramName]`
 	* Desctription: Parameter, when key is parameter name, value is parameter value.
 	* Valid values: `mixed`
 	
@@ -118,7 +118,7 @@ console.log($.ddUrl.current);
 	* Desctription: Path item.
 	* Valid values: `string`
 	
-* `jQuery.ddUrl.current.internal`
+* `jQuery.ddUrl.current.isInternal`
 	* Desctription: If the URL is in the current domain (always equal to `true` in the `jQuery.ddUrl.current` object).
 	* Valid values: `mixed`
 
