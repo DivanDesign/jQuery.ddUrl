@@ -210,7 +210,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parse
-	 * @version 1.2.3 (2020-11-29)
+	 * @version 1.2.4 (2020-11-30)
 	 */
 	parse: function(url){
 		var _this = this;
@@ -227,25 +227,49 @@ $.ddUrl = {
 				//Полный адрес (обработаем позже)
 				full: '',
 				//Протокол
-				protocol: regResult[1] || window.location.protocol.replace(':', ''),
+				protocol:
+					regResult[1] ||
+					window.location.protocol.replace(
+						':',
+						''
+					)
+				,
 				//Хост
-				host: regResult[6] || '',
+				host:
+					regResult[6] ||
+					''
+				,
 				//Порт
-				port: regResult[7] || '',
+				port:
+					regResult[7] ||
+					''
+				,
 				//Относительный адрес (без протокола, хоста и порта)
 				relative: regResult[8],
 				//Путь (без протокола, хоста, порта и всех параметров)
 				path: regResult[9],
-				//Get-параметры в виде объекта
-				query: _this.parseQuery(regResult[12] || ''),
+				
 				//Get-параметры в виде строки
-				queryString: regResult[12] || '',
+				queryString:
+					regResult[12] ||
+					''
+				,
+				//Get-параметры в виде объекта
+				query: _this.parseQuery(
+					regResult[12] ||
+					''
+				),
+				
+				//Хэш в виде строки
+				hashString:
+					regResult[13] ||
+					''
+				,
 				//Хэш в виде объекта
 				hash: {},
 				//Путь в хеше
 				hashPath: [],
-				//Хэш в виде строки
-				hashString: regResult[13] || '',
+				
 				//Внутренняя ли это ссылка
 				internal: false
 			}
