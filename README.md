@@ -1,6 +1,6 @@
 # jQuery.ddUrl
 
-Библиотека для работы с URL.
+The library for working with URLs.
 
 
 ## Requires
@@ -20,7 +20,7 @@
 <script src="jQuery-1.7.2.min.js"></script>
 
 <!-- jQuery.ddUrl -->
-<script src="jQuery.ddUrl-1.5.min.js"></script>
+<script src="jQuery.ddUrl-2.0.min.js"></script>
 ```
 
 
@@ -109,7 +109,7 @@ console.log($.ddUrl.current);
 	* Valid values: `mixed`
 	
 * `jQuery.ddUrl.current.hashPath`
-	* Desctription: Hash path as array (if URL is set as somethink like `'https://example.com#/some/path'`).
+	* Desctription: Hash path as array (if URL is set as something like `'https://example.com#/some/path'`).
 	* Valid values:
 		* `array`
 		* `[]`
