@@ -1,40 +1,185 @@
 # jQuery.ddUrl
-Библиотека для работы с URL.
 
-## Changelog
-### Версия 1.5 (2015-07-27)
-* \* Метод «$.ddUrl.parse» обновлён до 1.2.1:
-	* \* Хэш, как query string обрабатывается только если не содержит путь («domain.com/#/section»), т.е., не начинается с символа «/».
-* \+ При изменении URL (событие «popstate» у «$.ddTools.$window») обновляется текущий URL в поле «$.ddUrl.current», таким образом это поле всегда содержит объект актуального URL страницы.
+The library for working with URLs.
 
-### Версия 1.4 (2015-04-27)
-* \* Метод «$.ddUrl.parseQuery» обновлён до 1.2:
-	* \+ Добавлена поддержка объектов, в т.ч. и вложенных (конструкции вида «param[key][]=1»).
-	* \* Улучшена работа с массивами (раньше не поддерживались вложенные).
 
-### Версия 1.3 (2015-03-24)
-* \* Метод «$.ddUrl.parseQuery» обновлён до 1.1:
-	* \+ Добавлена поддержка массивов в строке запроса («param[]=1&param[]=2»).
+## Requires
+* [jQuery](https://jquery.com/) >= 1.7.2
 
-### Версия 1.2.1 (2014-12-28)
-* \* Метод «$.ddUrl.parse» обновлён до 1.2:
-	* \+ К результату добавлены поля «queryString» и «hashString», содержащие строковые представления get-параметров и хэша соответственно.
 
-### Версия 1.2 (2014-04-02)
-* \+ Добавлен метод «$.ddUrl.parseQuery». Разбивает строку запроса в объект.
-* \* Метод «$.ddUrl.get» переименован в «$.ddUrl.parse».
-* \* Метод «$.ddUrl.parse» обновлён до 1.1:
-	* \* Поля «query» и «hash» обрабатываются методом «$.ddUrl.parseQuery».
+## Documentation
 
-### Версия 1.1.1 (2012-09-17)
-* \* При вызове метода «$.ddUrl.get» без параметров url каждый раз пересчитывается заново.
 
-### Версия 1.1 (2012-09-05)
-* \* Библиотека «$.url» больше не используется, url разбирается по регулярке.
-* \- Удалено поле «$.ddTools.host».
-* \+ Добавлено поле «$.ddTools.current», содержащее текущий разобранный адрес.
+### Usage
 
-### Версия 1.0b (2012-06-18)
-* \+ Первая версия.
 
-<style>ul{list-style:none;}</style>
+#### 1. Include JS on page
+
+```html
+<!-- Required libs -->
+<script src="jQuery-1.7.2.min.js"></script>
+
+<!-- jQuery.ddUrl -->
+<script src="jQuery.ddUrl-2.0.min.js"></script>
+```
+
+
+#### 2. Use library methods and fields
+
+```js
+console.log($.ddUrl.current);
+```
+
+
+### Parameters description
+
+
+#### `jQuery.ddUrl.current`
+
+* `jQuery.ddUrl.current`
+	* Desctription: Always contains actual data about current page URL.
+	* Valid values: `objectPlain`
+	
+* `jQuery.ddUrl.current.full`
+	* Desctription: Full URL.
+	* Valid values: `string`
+	
+* `jQuery.ddUrl.current.protocol`
+	* Desctription: Protocol.  
+		E. g. `'http'`, `'https'`.
+	* Valid values: `string`
+	
+* `jQuery.ddUrl.current.host`
+	* Desctription: Domain name.  
+		E. g. `'example.com'`, `'subdomain.example.com'`.
+	* Valid values: `string`
+	
+* `jQuery.ddUrl.current.port`
+	* Desctription: Port.
+	* Valid values:
+		* `string`
+		* `''`
+	
+* `jQuery.ddUrl.current.relative`
+	* Desctription: Relative path (all except protocol, host and port).
+	* Valid values:
+		* `string`
+		* `''`
+	
+* `jQuery.ddUrl.current.path`
+	* Desctription: Path only (all except protocol, host, query, hash and port).
+	* Valid values:
+		* `string`
+		* `''`
+	
+* `jQuery.ddUrl.current.queryString`
+	* Desctription: Query parameters as string.  
+		E. g. `'param1=value1&param2=value2'`.
+	* Valid values:
+		* `string`
+		* `''`
+	
+* `jQuery.ddUrl.current.queryObject`
+	* Desctription: Query parameters as object.  
+		E. g. `{param1: 'value1', param2: 'value2'}`.
+	* Valid values:
+		* `objectPlain`
+		* `{}`
+	
+* `jQuery.ddUrl.current.queryObject[$paramName]`
+	* Desctription: Parameter, when key is parameter name, value is parameter value.
+	* Valid values: `mixed`
+	
+* `jQuery.ddUrl.current.hashString`
+	* Desctription: Hash parameters as string.  
+		E. g. `'param1=value1&param2=value2'`.
+	* Valid values:
+		* `string`
+		* `''`
+	
+* `jQuery.ddUrl.current.hashObject`
+	* Desctription: Hash parameters as object if hash is set as query string.  
+		E. g. `{param1: 'value1', param2: 'value2'}`).
+	* Valid values:
+		* `objectPlain`
+		* `{}`
+	
+* `jQuery.ddUrl.current.hashObject[$paramName]`
+	* Desctription: Parameter, when key is parameter name, value is parameter value.
+	* Valid values: `mixed`
+	
+* `jQuery.ddUrl.current.hashPath`
+	* Desctription: Hash path as array (if URL is set as something like `'https://example.com#/some/path'`).
+	* Valid values:
+		* `array`
+		* `[]`
+	
+* `jQuery.ddUrl.current.hashPath[i]`
+	* Desctription: Path item.
+	* Valid values: `string`
+	
+* `jQuery.ddUrl.current.isInternal`
+	* Desctription: If the URL is in the current domain (always equal to `true` in the `jQuery.ddUrl.current` object).
+	* Valid values: `mixed`
+
+
+#### `jQuery.ddUrl.parse(url)`
+
+Parse an URL string to an object.
+
+* `url`
+	* Desctription: URL to parse.  
+		E. g. `https://example.com/page?param1=value1/#filter[availiable]=1`.
+	* Valid values: `string`
+	* Default value: `window.location.toString()` (current page URL)
+
+
+##### Returns
+
+* `result`
+	* Desctription: Returns an object with the same fields as `jQuery.ddUrl.current`.
+	* Valid values: `objectPlain`
+
+
+#### `jQuery.ddUrl.parseQuery(query)`
+
+Parse a [Query string](https://en.wikipedia.org/wiki/Query_string) to an object.
+
+* `query`
+	* Desctription: Query string to parse.  
+		E. g. `param1=value1&param2=value2`.
+	* Valid values: `string`
+	* **Required**
+
+
+##### Returns
+
+* `result`
+	* Valid values: `objectPlain`
+
+
+#### `jQuery.ddUrl.parsePath(path)`
+
+Parse a path string to an array. All items will be trimmed, empty items will be removed.
+
+* `path`
+	* Desctription: Path string to parse.
+	* Valid values: `string`
+	* **Required**
+
+
+##### Returns
+
+* `result`
+	* Valid values: `array`
+	
+* `result[i]`
+	* Valid values: `string`
+
+
+## Links
+
+* [Telegram chat](https://t.me/dd_code)
+
+
+<link rel="stylesheet" type="text/css" href="https://DivanDesign.ru/assets/files/ddMarkdown.css" />
