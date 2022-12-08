@@ -13,7 +13,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parseQuery
-	 * @version 1.2.2 (2022-12-08)
+	 * @version 1.2.3 (2022-12-08)
 	 */
 	parseQuery: function(query){
 		/**
@@ -51,16 +51,16 @@ $.ddUrl = {
 			var result = {};
 			
 			//Перебираем элементы элемента и закидываем в объект
-			$.each(
-				arr,
-				function(
+			arr.forEach(
+				([
 					key,
 					val
-				){
+				]) =>
+				{
 					result[key] = val;
 				}
 			);
-			
+
 			return result;
 		}
 		
