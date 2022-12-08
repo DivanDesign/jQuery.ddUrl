@@ -210,13 +210,13 @@ $.ddUrl = {
 	
 	/**
 	 * @method parse
-	 * @version 2.0 (2020-11-30)
+	 * @version 2.0.1 (2022-12-08)
 	 */
 	parse: function(url){
 		var _this = this;
 		
 		//Если url не передан
-		if ($.type(url) != 'string'){
+		if (typeof url != 'string'){
 			//Берём за основу текущий урл
 			url = window.location.toString();
 		}
