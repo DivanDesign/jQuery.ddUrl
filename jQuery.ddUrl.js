@@ -13,7 +13,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parseQuery
-	 * @version 1.2.1 (2020-11-29)
+	 * @version 1.2.2 (2022-12-08)
 	 */
 	parseQuery: function(query){
 		/**
@@ -31,7 +31,7 @@ $.ddUrl = {
 			value
 		){
 			//Если элемент существует и является массивом
-			if ($.isArray(obj[key])){
+			if (Array.isArray(obj[key])){
 				//Докидываем значение
 				obj[key].push(value);
 			}else{
@@ -119,7 +119,7 @@ $.ddUrl = {
 					//Ключ не числовой, но элемент является массивом, надо преобразовать массив в объект с числовыми ключами
 					if (
 						!$.isNumeric(keyParts_first) &&
-						$.isArray(obj[key])
+						Array.isArray(obj[key])
 					){
 						//Преобразовываем массив в объект
 						obj[key] = arrayToObject(obj[key]);
