@@ -4,37 +4,35 @@ The library for working with URLs.
 
 
 ## Requires
-* [jQuery](https://jquery.com/) >= 1.7.2
+
+* [jQuery](https://jquery.com/) >= 3.5 (not tested with older versions)
 
 
-## Documentation
+## Usage
 
 
-### Usage
-
-
-#### 1. Include JS on page
+### 1. Include JS on page
 
 ```html
 <!-- Required libs -->
-<script src="jQuery-1.7.2.min.js"></script>
+<script src="jQuery-3.5.0.min.js"></script>
 
 <!-- jQuery.ddUrl -->
-<script src="jQuery.ddUrl-2.0.min.js"></script>
+<script src="jQuery.ddUrl-2.1.min.js"></script>
 ```
 
 
-#### 2. Use library methods and fields
+### 2. Use library methods and fields
 
 ```js
 console.log($.ddUrl.current);
 ```
 
 
-### Parameters description
+## Parameters description
 
 
-#### `jQuery.ddUrl.current`
+### `jQuery.ddUrl.current`
 
 * `jQuery.ddUrl.current`
 	* Desctription: Always contains actual data about current page URL.
@@ -60,14 +58,19 @@ console.log($.ddUrl.current);
 		* `string`
 		* `''`
 	
+* `jQuery.ddUrl.current.origin`
+	* Desctription: Origin (protocol, host and port together).  
+		E. g. `'https://example.com:443'`.
+	* Valid values: `string`
+	
 * `jQuery.ddUrl.current.relative`
-	* Desctription: Relative path (all except protocol, host and port).
+	* Desctription: Relative path (all except origin).
 	* Valid values:
 		* `string`
 		* `''`
 	
 * `jQuery.ddUrl.current.path`
-	* Desctription: Path only (all except protocol, host, query, hash and port).
+	* Desctription: Path only (all except origin, query and hash).
 	* Valid values:
 		* `string`
 		* `''`
@@ -91,14 +94,14 @@ console.log($.ddUrl.current);
 	* Valid values: `mixed`
 	
 * `jQuery.ddUrl.current.hashString`
-	* Desctription: Hash parameters as string.  
+	* Desctription: Hash as string.  
 		E. g. `'param1=value1&param2=value2'`.
 	* Valid values:
 		* `string`
 		* `''`
 	
 * `jQuery.ddUrl.current.hashObject`
-	* Desctription: Hash parameters as object if hash is set as query string.  
+	* Desctription: Hash parameters as object if hash is set as [query string](https://en.wikipedia.org/wiki/Query_string).  
 		E. g. `{param1: 'value1', param2: 'value2'}`).
 	* Valid values:
 		* `objectPlain`
@@ -119,11 +122,11 @@ console.log($.ddUrl.current);
 	* Valid values: `string`
 	
 * `jQuery.ddUrl.current.isInternal`
-	* Desctription: If the URL is in the current domain (always equal to `true` in the `jQuery.ddUrl.current` object).
-	* Valid values: `mixed`
+	* Desctription: Does the URL refer to the current domain (always equal to `true` in the `jQuery.ddUrl.current` object)?
+	* Valid values: `boolean`
 
 
-#### `jQuery.ddUrl.parse(url)`
+### `jQuery.ddUrl.parse(url)`
 
 Parse an URL string to an object.
 
@@ -134,14 +137,14 @@ Parse an URL string to an object.
 	* Default value: `window.location.toString()` (current page URL)
 
 
-##### Returns
+#### Returns
 
 * `result`
 	* Desctription: Returns an object with the same fields as `jQuery.ddUrl.current`.
 	* Valid values: `objectPlain`
 
 
-#### `jQuery.ddUrl.parseQuery(query)`
+### `jQuery.ddUrl.parseQuery(query)`
 
 Parse a [Query string](https://en.wikipedia.org/wiki/Query_string) to an object.
 
@@ -152,13 +155,13 @@ Parse a [Query string](https://en.wikipedia.org/wiki/Query_string) to an object.
 	* **Required**
 
 
-##### Returns
+#### Returns
 
 * `result`
 	* Valid values: `objectPlain`
 
 
-#### `jQuery.ddUrl.parsePath(path)`
+### `jQuery.ddUrl.parsePath(path)`
 
 Parse a path string to an array. All items will be trimmed, empty items will be removed.
 
@@ -168,7 +171,7 @@ Parse a path string to an array. All items will be trimmed, empty items will be 
 	* **Required**
 
 
-##### Returns
+#### Returns
 
 * `result`
 	* Valid values: `array`
@@ -180,6 +183,7 @@ Parse a path string to an array. All items will be trimmed, empty items will be 
 ## Links
 
 * [Telegram chat](https://t.me/dd_code)
+* [GitHub](https://github.com/DivanDesign/jQuery.ddUrl)
 
 
-<link rel="stylesheet" type="text/css" href="https://DivanDesign.ru/assets/files/ddMarkdown.css" />
+<link rel="stylesheet" type="text/css" href="https://raw.githack.com/DivanDesign/CSS.ddMarkdown/master/style.min.css" />

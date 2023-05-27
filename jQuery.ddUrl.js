@@ -1,10 +1,10 @@
 /**
  * jQuery.ddUrl
- * @version 2.0 (2020-11-30)
+ * @version 2.1 (2023-05-27)
  * 
  * @see README.md
  * 
- * @copyright 2012–2020 [DD Group]{@link https://DivanDesign.biz }
+ * @copyright 2012–2023 [Ronef]{@link https://Ronef.ru }
  */
 
 (function($){
@@ -13,7 +13,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parseQuery
-	 * @version 1.2.1 (2020-11-29)
+	 * @version 1.2.3 (2022-12-08)
 	 */
 	parseQuery: function(query){
 		/**
@@ -31,7 +31,7 @@ $.ddUrl = {
 			value
 		){
 			//Если элемент существует и является массивом
-			if ($.isArray(obj[key])){
+			if (Array.isArray(obj[key])){
 				//Докидываем значение
 				obj[key].push(value);
 			}else{
@@ -51,16 +51,16 @@ $.ddUrl = {
 			var result = {};
 			
 			//Перебираем элементы элемента и закидываем в объект
-			$.each(
-				arr,
-				function(
+			arr.forEach(
+				([
 					key,
 					val
-				){
+				]) =>
+				{
 					result[key] = val;
 				}
 			);
-			
+
 			return result;
 		}
 		
@@ -119,7 +119,7 @@ $.ddUrl = {
 					//Ключ не числовой, но элемент является массивом, надо преобразовать массив в объект с числовыми ключами
 					if (
 						!$.isNumeric(keyParts_first) &&
-						$.isArray(obj[key])
+						Array.isArray(obj[key])
 					){
 						//Преобразовываем массив в объект
 						obj[key] = arrayToObject(obj[key]);
@@ -210,13 +210,13 @@ $.ddUrl = {
 	
 	/**
 	 * @method parse
-	 * @version 2.0 (2020-11-30)
+	 * @version 2.1 (2023-05-27)
 	 */
 	parse: function(url){
 		var _this = this;
 		
 		//Если url не передан
-		if ($.type(url) != 'string'){
+		if (typeof url != 'string'){
 			//Берём за основу текущий урл
 			url = window.location.toString();
 		}
@@ -226,6 +226,8 @@ $.ddUrl = {
 			result = {
 				//Полный адрес (обработаем позже)
 				full: '',
+				//Origin (обработаем позже)
+				origin: '',
 				//Протокол
 				protocol:
 					regResult[1] ||
@@ -309,8 +311,8 @@ $.ddUrl = {
 			result.isInternal = true;
 		}
 		
-		//Полный урл
-		result.full =
+		//Origin
+		result.origin =
 			result.protocol +
 			'://' +
 			result.host +
@@ -321,7 +323,12 @@ $.ddUrl = {
 					result.port
 				) :
 				''
-			) +
+			)
+		;
+		
+		//Полный урл
+		result.full =
+			result.origin +
 			result.relative
 		;
 		
