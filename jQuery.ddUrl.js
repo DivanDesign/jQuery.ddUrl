@@ -210,7 +210,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parse
-	 * @version 2.0.1 (2022-12-08)
+	 * @version 2.1 (2023-05-27)
 	 */
 	parse: function(url){
 		var _this = this;
@@ -226,6 +226,8 @@ $.ddUrl = {
 			result = {
 				//Полный адрес (обработаем позже)
 				full: '',
+				//Origin (обработаем позже)
+				origin: '',
 				//Протокол
 				protocol:
 					regResult[1] ||
@@ -309,8 +311,8 @@ $.ddUrl = {
 			result.isInternal = true;
 		}
 		
-		//Полный урл
-		result.full =
+		//Origin
+		result.origin =
 			result.protocol +
 			'://' +
 			result.host +
@@ -321,7 +323,12 @@ $.ddUrl = {
 					result.port
 				) :
 				''
-			) +
+			)
+		;
+		
+		//Полный урл
+		result.full =
+			result.origin +
 			result.relative
 		;
 		

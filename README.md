@@ -58,14 +58,19 @@ console.log($.ddUrl.current);
 		* `string`
 		* `''`
 	
+* `jQuery.ddUrl.current.origin`
+	* Desctription: Origin (protocol, host and port together).  
+		E. g. `'https://example.com:443'`.
+	* Valid values: `string`
+	
 * `jQuery.ddUrl.current.relative`
-	* Desctription: Relative path (all except protocol, host and port).
+	* Desctription: Relative path (all except origin).
 	* Valid values:
 		* `string`
 		* `''`
 	
 * `jQuery.ddUrl.current.path`
-	* Desctription: Path only (all except protocol, host, query, hash and port).
+	* Desctription: Path only (all except origin, query and hash).
 	* Valid values:
 		* `string`
 		* `''`
