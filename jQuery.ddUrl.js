@@ -1,10 +1,10 @@
 /**
  * jQuery.ddUrl
- * @version 2.0 (2020-11-30)
+ * @version 2.1 (2023-05-27)
  * 
  * @see README.md
  * 
- * @copyright 2012–2020 [Ronef]{@link https://Ronef.ru }
+ * @copyright 2012–2023 [Ronef]{@link https://Ronef.ru }
  */
 
 (function($){

@@ -1,6 +1,12 @@
 # jQuery.ddUrl changelog
 
 
+## Version 2.1 (2023-05-27)
+* \+ `jQuery.ddUrl.current.origin`: The new property. Contains origin (protocol, host and port together), e. g. `'https://example.com:443'`.
+* \+ README_ru.
+* \* jQuery >= 3.5 is required because the library is not tested with older versions.
+
+
 ## Version 2.0 (2020-11-30)
 * \* Attention! Backward compatibility is broken.
 * \* `jQuery.ddUrl.current` (and the same results of `jQuery.ddUrl.parse`):
