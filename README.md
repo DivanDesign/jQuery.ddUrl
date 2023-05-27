@@ -181,4 +181,4 @@ Parse a path string to an array. All items will be trimmed, empty items will be 
 * [GitHub](https://github.com/DivanDesign/jQuery.ddUrl)
 
 
-<link rel="stylesheet" type="text/css" href="https://DivanDesign.ru/assets/files/ddMarkdown.css" />
+<link rel="stylesheet" type="text/css" href="https://raw.githack.com/DivanDesign/CSS.ddMarkdown/master/style.min.css" />
