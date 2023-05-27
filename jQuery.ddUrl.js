@@ -4,7 +4,7 @@
  * 
  * @see README.md
  * 
- * @copyright 2012–2020 [DD Group]{@link https://DivanDesign.biz }
+ * @copyright 2012–2020 [Ronef]{@link https://Ronef.ru }
  */
 
 (function($){
