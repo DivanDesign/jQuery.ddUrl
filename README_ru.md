@@ -5,7 +5,7 @@
 
 ## Использует
 
-* [jQuery](https://jquery.com/) >= 1.7.2
+* [jQuery](https://jquery.com/) >= 3.5 (не тестировался с более ранними версиями)
 
 
 ## Usage
@@ -15,7 +15,7 @@
 
 ```html
 <!-- Необходимые библиотеки -->
-<script src="jQuery-1.7.2.min.js"></script>
+<script src="jQuery-3.5.0.min.js"></script>
 
 <!-- jQuery.ddUrl -->
 <script src="jQuery.ddUrl-2.0.min.js"></script>
