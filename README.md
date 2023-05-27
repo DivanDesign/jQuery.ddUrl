@@ -4,16 +4,14 @@ The library for working with URLs.
 
 
 ## Requires
+
 * [jQuery](https://jquery.com/) >= 1.7.2
 
 
-## Documentation
+## Usage
 
 
-### Usage
-
-
-#### 1. Include JS on page
+### 1. Include JS on page
 
 ```html
 <!-- Required libs -->
@@ -24,17 +22,17 @@ The library for working with URLs.
 ```
 
 
-#### 2. Use library methods and fields
+### 2. Use library methods and fields
 
 ```js
 console.log($.ddUrl.current);
 ```
 
 
-### Parameters description
+## Parameters description
 
 
-#### `jQuery.ddUrl.current`
+### `jQuery.ddUrl.current`
 
 * `jQuery.ddUrl.current`
 	* Desctription: Always contains actual data about current page URL.
@@ -123,7 +121,7 @@ console.log($.ddUrl.current);
 	* Valid values: `mixed`
 
 
-#### `jQuery.ddUrl.parse(url)`
+### `jQuery.ddUrl.parse(url)`
 
 Parse an URL string to an object.
 
@@ -134,14 +132,14 @@ Parse an URL string to an object.
 	* Default value: `window.location.toString()` (current page URL)
 
 
-##### Returns
+#### Returns
 
 * `result`
 	* Desctription: Returns an object with the same fields as `jQuery.ddUrl.current`.
 	* Valid values: `objectPlain`
 
 
-#### `jQuery.ddUrl.parseQuery(query)`
+### `jQuery.ddUrl.parseQuery(query)`
 
 Parse a [Query string](https://en.wikipedia.org/wiki/Query_string) to an object.
 
@@ -152,13 +150,13 @@ Parse a [Query string](https://en.wikipedia.org/wiki/Query_string) to an object.
 	* **Required**
 
 
-##### Returns
+#### Returns
 
 * `result`
 	* Valid values: `objectPlain`
 
 
-#### `jQuery.ddUrl.parsePath(path)`
+### `jQuery.ddUrl.parsePath(path)`
 
 Parse a path string to an array. All items will be trimmed, empty items will be removed.
 
@@ -168,7 +166,7 @@ Parse a path string to an array. All items will be trimmed, empty items will be 
 	* **Required**
 
 
-##### Returns
+#### Returns
 
 * `result`
 	* Valid values: `array`
