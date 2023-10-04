@@ -1,6 +1,6 @@
 /**
  * jQuery.ddUrl
- * @version 2.1 (2023-05-27)
+ * @version 2.1.1 (2023-10-05)
  * 
  * @see README.md
  * 
