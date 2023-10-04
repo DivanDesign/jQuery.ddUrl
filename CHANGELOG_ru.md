@@ -1,6 +1,10 @@
 # jQuery.ddUrl changelog
 
 
+## Версия 2.1.1 (2023-10-05)
+* \* `jQuery.ddUrl.parse` → Result → `result.path`: Будет исправлено так же, как и `result.relative`, если URL задан как относительный без `'/'` в начале.
+
+
 ## Версия 2.1 (2023-05-27)
 * \+ `jQuery.ddUrl.current.origin`: Новое свойство. Содержит origin (протокол, хост и порт вместе), например, `'https://example.com:443'`.
 * \+ README_ru.

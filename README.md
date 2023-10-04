@@ -18,7 +18,7 @@ The library for working with URLs.
 <script src="jQuery-3.5.0.min.js"></script>
 
 <!-- jQuery.ddUrl -->
-<script src="jQuery.ddUrl-2.1.min.js"></script>
+<script src="jQuery.ddUrl-2.1.1.min.js"></script>
 ```
 
 

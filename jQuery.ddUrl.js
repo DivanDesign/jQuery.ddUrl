@@ -1,6 +1,6 @@
 /**
  * jQuery.ddUrl
- * @version 2.1 (2023-05-27)
+ * @version 2.1.1 (2023-10-05)
  * 
  * @see README.md
  * 
@@ -210,7 +210,7 @@ $.ddUrl = {
 	
 	/**
 	 * @method parse
-	 * @version 2.1 (2023-05-27)
+	 * @version 2.1.1 (2023-10-05)
 	 */
 	parse: function(url){
 		var _this = this;
@@ -292,12 +292,18 @@ $.ddUrl = {
 		if (result.host != ''){
 			//Но при этом инвалидный (не содержит доменное окончание) (относительная ссылка без «/» в начале)
 			if (result.host.search(/\.[^\.]+/) == -1){
-				//Добавим несчастному слэш в начале
+				//Пофиксим и добавим недостающий слэш в начало
+				result.path =
+					'/' +
+					result.host +
+					result.path
+				;
 				result.relative =
 					'/' +
 					result.host +
 					result.relative
 				;
+				
 				//Сбросим хост, ибо это внутренняя ссылка
 				result.host = window.location.hostname;
 			}
